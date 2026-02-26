@@ -13,7 +13,13 @@ def main():
     running = True
 
     # simple player represented by a rect
-    player_rect = pygame.Rect(SCREEN_WIDTH // 2 - 20, SCREEN_HEIGHT // 2 - 20, 40, 40)
+    # start player rectangle centered on screen
+    player_rect = pygame.Rect(
+        SCREEN_WIDTH // 2 - 20,
+        SCREEN_HEIGHT // 2 - 20,
+        40,
+        40,
+    )
     speed = 5
 
     def handle_input():
@@ -34,8 +40,14 @@ def main():
             player_rect.y += speed
 
         # clamp to screen
-        player_rect.x = max(0, min(player_rect.x, SCREEN_WIDTH - player_rect.width))
-        player_rect.y = max(0, min(player_rect.y, SCREEN_HEIGHT - player_rect.height))
+        player_rect.x = max(
+            0,
+            min(player_rect.x, SCREEN_WIDTH - player_rect.width),
+        )
+        player_rect.y = max(
+            0,
+            min(player_rect.y, SCREEN_HEIGHT - player_rect.height),
+        )
 
     def render():
         screen.fill((0, 0, 50))  # dark blue background
@@ -51,7 +63,4 @@ def main():
 
     pygame.quit()
 
-
-
-if __name__ == "__main__":
     main()
