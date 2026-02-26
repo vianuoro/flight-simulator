@@ -1,94 +1,75 @@
-# flight-simulator
-AI-written-flight-simulator
+# SkyRiot 🛩️  
+*A ridiculously simple browser flight shooter written in Python*
 
-# SkyRiot 🛩️🔥  
-*A browser-based Python flight combat simulator*
+SkyRiot is a lightweight, arcade-style airplane shooter built with one goal:
 
-SkyRiot is an arcade-style 3D flight simulator where you pilot a fighter jet, weave through the sky, and engage enemy aircraft in fast-paced aerial combat.
+> Make it playable fast.  
+> Make it run in a browser.  
+> Keep it simple.
 
-Built in **Python**, designed to run in the **browser**, and structured for fun-first experimentation.
+No over-engineered engines. No aerospace PhD required. Just Python, a sky-colored background, and things that explode when you shoot them.
 
 ---
 
-## 🎯 Vision
+## 🧠 The Easiest Possible Approach
 
-Create a lightweight, multiplayer-ready (eventually), browser-playable dogfighting simulator that balances:
+We are not building a full 3D simulator.
 
-- ✈️ Responsive flight physics  
-- 🎮 Arcade-style combat  
-- 🌐 Web deployment  
-- 🧠 Clean, modular Python architecture  
+We are building:
 
-This is not a hyper-realistic aerospace engineering project.  
-This is speed, sky, and smoke trails.
+**A 2D top-down or pseudo-3D shooter using `pygame`, compiled to WebAssembly with `pygbag`.**
+
+That’s it.
+
+### Why?
+
+- `pygame` is simple
+- `pygbag` runs pygame in the browser
+- No custom WebGL
+- No backend server
+- No complicated rendering pipeline
+- Just Python → browser
 
 ---
 
 ## 🛠 Tech Stack
 
-### Core Language
 - **Python 3.11+**
-
-### Rendering (Browser-Compatible Options)
-One of the following approaches will be used:
-
-- **Pyodide** (Python running in WebAssembly)
-- **Brython**
-- **Pygbag** (Pygame → WebAssembly)
-- Or a Python backend + WebGL frontend
-
-### Graphics / Engine Options
-- `pygame` (arcade prototype)
-- `moderngl`
-- `ursina`
-- Or custom WebGL bridge
-
-Final stack will evolve as the project matures.
+- **pygame**
+- **pygbag** (to run in browser)
 
 ---
 
-## 🕹 Gameplay Features (Planned)
+## 🎮 Game Design (Minimal Version)
 
-### Phase 1 — Prototype
-- Player-controlled aircraft
-- Basic 3D or pseudo-3D skybox
-- Throttle control
-- Pitch / yaw / roll
-- Shooting projectiles
-- Enemy AI aircraft
-- Collision detection
-- Health system
+### Core Gameplay Loop
 
-### Phase 2 — Combat Polish
-- Lock-on targeting
-- Missile system
-- Bullet spread + recoil
-- Particle trails
-- Explosions
-- Sound effects
+- Player airplane moves around screen
+- Enemy airplanes spawn
+- Player shoots bullets
+- Bullets destroy enemies
+- Enemies damage player on collision
+- Score increases
+- Repeat until explosion
 
-### Phase 3 — Advanced Systems
-- Multiplayer dogfights
-- Leaderboards
-- Procedural sky environments
-- Damage modeling
-- HUD with radar + velocity vector
+Fast. Arcade. Clean.
 
 ---
 
-## 🎮 Controls (Planned)
+## 🕹 Controls
 
-| Action        | Key |
-|--------------|-----|
-| Pitch        | W / S |
-| Roll         | A / D |
-| Yaw          | Q / E |
-| Throttle     | Shift / Ctrl |
-| Fire Gun     | Space |
-| Fire Missile | F |
+| Action | Key |
+|--------|------|
+| Move   | Arrow Keys or WASD |
+| Shoot  | Space |
+| Quit   | ESC |
 
-Controls are configurable.
+No throttle.  
+No lift equations.  
+No wind resistance debates.
+
+We vibe first. We optimize later.
 
 ---
 
-## 🧠 Architecture Overview
+## 📁 Project Structure
