@@ -2,6 +2,7 @@
 
 import pygame
 from .settings import SCREEN_WIDTH, SCREEN_HEIGHT
+from .player import Player
 
 
 def main():
@@ -12,15 +13,11 @@ def main():
     clock = pygame.time.Clock()
     running = True
 
-    # simple player represented by a rect
-    # start player rectangle centered on screen
-    player_rect = pygame.Rect(
+    # create a player object, starting centered on screen
+    player = Player(
         SCREEN_WIDTH // 2 - 20,
         SCREEN_HEIGHT // 2 - 20,
-        40,
-        40,
     )
-    speed = 5
 
     def handle_input():
         nonlocal running
@@ -29,29 +26,13 @@ def main():
                 running = False
 
     def update():
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_LEFT] or keys[pygame.K_a]:
-            player_rect.x -= speed
-        if keys[pygame.K_RIGHT] or keys[pygame.K_d]:
-            player_rect.x += speed
-        if keys[pygame.K_UP] or keys[pygame.K_w]:
-            player_rect.y -= speed
-        if keys[pygame.K_DOWN] or keys[pygame.K_s]:
-            player_rect.y += speed
-
-        # clamp to screen
-        player_rect.x = max(
-            0,
-            min(player_rect.x, SCREEN_WIDTH - player_rect.width),
-        )
-        player_rect.y = max(
-            0,
-            min(player_rect.y, SCREEN_HEIGHT - player_rect.height),
-        )
+        # delegate movement and clamping to player object
+        player.handle_input()
+        player.update()
 
     def render():
         screen.fill((0, 0, 50))  # dark blue background
-        pygame.draw.rect(screen, (200, 200, 0), player_rect)
+        player.draw(screen)
         pygame.display.flip()
 
     # Main loop
